@@ -35,7 +35,7 @@
         }
 
         html {
-            scroll-behavior: smooth; /* 讓錨點跳轉有滑動效果 */
+            scroll-behavior: smooth;
         }
 
         body {
@@ -98,7 +98,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            background-color: rgba(15, 23, 42, 0.95); /* 半透明背景 */
+            background-color: rgba(15, 23, 42, 0.95);
             border-bottom: 1px solid var(--color-border);
             height: var(--header-height);
             display: flex;
@@ -149,7 +149,7 @@
 
         /* CSS:HERO-START */
         .section-hero {
-            min-height: 80vh; /* 佔據大部分首屏 */
+            min-height: 80vh;
             display: flex;
             align-items: center;
             text-align: center;
@@ -179,7 +179,7 @@
 
         /* CSS:ABOUT-START */
         .section-about {
-            background-color: var(--color-bg-secondary); /* 區分背景 */
+            background-color: var(--color-bg-secondary);
         }
         /* CSS:ABOUT-END */
 
@@ -207,7 +207,6 @@
 
 
         /* CSS:RWD-START */
-        /* 平板與桌面 (min-width: 768px) */
         @media (min-width: 768px) {
             .section {
                 padding: 6rem 0;
@@ -224,17 +223,6 @@
             .nav-link {
                 font-size: 1rem;
             }
-            
-            /* 讓某些區塊在桌面版變成左右排版 (示意) */
-            .section-about .container,
-            .section-projects .container {
-                /* 這裡預留未來 Grid 或 Flex 的空間 */
-            }
-        }
-        
-        /* 大螢幕 (min-width: 1440px) */
-        @media (min-width: 1440px) {
-            /* 針對超大螢幕的微調 */
         }
         /* CSS:RWD-END */
 
@@ -247,10 +235,11 @@
             <div class="container">
                 <a href="#hero" class="brand-logo">Yi-Chen · Frontend Dev</a>
                 <nav class="nav">
+                    <a href="#hero" class="nav-link">首頁</a>
                     <a href="#about" class="nav-link">關於我</a>
                     <a href="#skills" class="nav-link">技能</a>
                     <a href="#projects" class="nav-link">作品集</a>
-                    <a href="#contact" class="nav-link">聯絡</a>
+                    <a href="#contact" class="nav-link">聯絡我</a>
                 </nav>
             </div>
         </header>
@@ -264,20 +253,19 @@
                         目前此區塊為占位內容，之後會展示我的核心價值與一句話自我介紹。
                     </p>
                     <div class="hero-image-wrapper">
-                         <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" 
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" 
                              alt="筆記型電腦與程式碼開發畫面示意圖" 
                              loading="lazy"
                              width="1200" height="600">
                     </div>
                     <p style="margin-top: 2rem; color: var(--color-primary); font-weight: bold;">
-                        【開發者提示】<br>
-                        之後會用 Section SDD 的 Prompt 產生正式文案與版面，再把整個 section 程式碼（包含 SECTION:HERO 註解）整段貼回來取代這一區。
+                        【開發者提示】之後會用 Section SDD 的 Prompt 產生正式文案與版面，再把整個 section 程式碼整段貼回來取代這一區。
                     </p>
                 </div>
             </section>
             <section id="about" class="section section-about" aria-labelledby="about-heading">
                 <div class="container">
-                    <h2 id="about-heading" class="section-title">關於我</h2>
+                    <h2 id="about-heading" class="section-title">關於我（之後會用 Section SDD 替換）</h2>
                     <p>這裡目前是 About 區的占位內容。</p>
                     <p>未來會在這裡放入我的詳細背景介紹、學經歷以及轉職心路歷程。</p>
                     <hr style="border-color: var(--color-border); margin: 2rem 0;">
@@ -288,7 +276,7 @@
             </section>
             <section id="skills" class="section section-skills" aria-labelledby="skills-heading">
                 <div class="container">
-                    <h2 id="skills-heading" class="section-title">專業技能</h2>
+                    <h2 id="skills-heading" class="section-title">專業技能（之後會用 Section SDD 替換）</h2>
                     <p>這裡目前是 Skills 區的占位內容。</p>
                     <p>未來會在這裡以列表或卡片形式展示 HTML, CSS, JavaScript, React 等技術堆疊。</p>
                     <hr style="border-color: var(--color-border); margin: 2rem 0;">
@@ -299,7 +287,7 @@
             </section>
             <section id="projects" class="section section-projects" aria-labelledby="projects-heading">
                 <div class="container">
-                    <h2 id="projects-heading" class="section-title">精選作品集</h2>
+                    <h2 id="projects-heading" class="section-title">精選作品集（之後會用 Section SDD 替換）</h2>
                     <p>這裡目前是 Projects 區的占位內容。</p>
                     <p>未來會在這裡展示實際開發過的專案截圖、技術說明與 GitHub 連結。</p>
                     
@@ -316,7 +304,7 @@
             </section>
             <section id="contact" class="section section-contact" aria-labelledby="contact-heading">
                 <div class="container">
-                    <h2 id="contact-heading" class="section-title">聯絡我</h2>
+                    <h2 id="contact-heading" class="section-title">聯絡我（之後會用 Section SDD 替換）</h2>
                     <p>這裡目前是 Contact 區的占位內容。</p>
                     <p>未來會提供 Email、LinkedIn 等具體的聯絡管道連結。</p>
                     
