@@ -180,6 +180,67 @@
         /* CSS:ABOUT-START */
         .section-about {
             background-color: var(--color-bg-secondary);
+            position: relative;
+            /* 手機版預設：取消上下 padding 以便讓圖片無縫貼合，內容 padding 改由內部控制 */
+            padding: 0; 
+            padding-bottom: 4rem;
+        }
+
+        /* About 專用的內容容器 */
+        .about-content {
+            position: relative;
+            z-index: 2;
+            padding-top: 3rem;
+        }
+
+        /* About 專用的圖片容器（手機版在上方） */
+        .about-img-wrapper {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .about-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 0; /* 手機版滿版不圓角 */
+        }
+
+        /* 列表樣式 */
+        .about-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+            border-left: 2px solid var(--color-primary);
+            padding-left: 1.5rem;
+        }
+
+        .about-list li {
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+            color: var(--color-text-main);
+        }
+
+        /* About 專用的按鈕群組 */
+        .about-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* 描邊按鈕樣式（次要按鈕） */
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--color-primary);
+            color: var(--color-primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--color-primary);
+            color: var(--color-bg-main);
+            text-decoration: none;
         }
         /* CSS:ABOUT-END */
 
@@ -223,6 +284,30 @@
             .nav-link {
                 font-size: 1rem;
             }
+
+            /* About 區 RWD：平板以上變為「文字在上，圖片在下（當作背景）」 */
+            .section-about {
+                padding: 6rem 0; /* 恢復標準間距 */
+            }
+
+            .about-content {
+                padding-top: 0;
+                max-width: 650px; /* 限制文字寬度，增加可讀性 */
+            }
+
+            .about-img-wrapper {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1; /* 在背景層 */
+            }
+
+            .about-img {
+                opacity: 0.15; /* 降低透明度，作為背景紋理 */
+                filter: grayscale(30%); /* 稍微降低飽和度，符合專業感 */
+            }
         }
         /* CSS:RWD-END */
 
@@ -245,7 +330,7 @@
         </header>
 
         <main>
-            <section id="hero" class="section section-hero">
+          <section id="hero" class="section section-hero">
                 <div class="container hero-content">
                     <h1>你好，我是 Yi-Chen<br>專注細節的前端開發者</h1>
                     <p>
@@ -263,18 +348,39 @@
                     </p>
                 </div>
             </section>
-            <section id="about" class="section section-about" aria-labelledby="about-heading">
-                <div class="container">
-                    <h2 id="about-heading" class="section-title">關於我（之後會用 Section SDD 替換）</h2>
-                    <p>這裡目前是 About 區的占位內容。</p>
-                    <p>未來會在這裡放入我的詳細背景介紹、學經歷以及轉職心路歷程。</p>
-                    <hr style="border-color: var(--color-border); margin: 2rem 0;">
-                    <p style="color: var(--color-text-muted);">
-                        之後會用 Section SDD 的 Prompt 產生新的 section，請把新的 section 程式碼整段貼在這兩個註解中間，完全取代現在這一區。
+          <section id="about" class="section section-about" aria-labelledby="about-heading">
+                
+                <div class="about-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?q=80&w=1600&auto=format&fit=crop" 
+                         alt="壯麗的山脈與雲海，象徵冒險與探索的精神" 
+                         class="about-img"
+                         loading="lazy">
+                </div>
+
+                <div class="container about-content">
+                    <h2 id="about-heading" class="section-title">關於我</h2>
+                    
+                    <p>
+                        我現在是一位遊走於美感編排與教學分享的前端工程師，也是一位致力於將靈感化為現實的夢想創造者。我相信程式碼不只是邏輯的堆疊，更是建構使用者體驗的重要基石。
                     </p>
+                    
+                    <p>
+                        我重視透明順暢的溝通，骨子裡流著冒險的血液。喜歡帶著筆電到不同國家旅居，在未知的環境中收集靈感，並將這些養分注入到每一個專案細節中。這讓我不僅能理解設計需求，更能用技術優雅地實現它。
+                    </p>
+
+                    <ul class="about-list">
+                        <li>擅長跨部門溝通與需求釐清</li>
+                        <li>具備從 0 到 1 的產品設計思維</li>
+                        <li>能提供兼具美感與效能的前端建議</li>
+                    </ul>
+
+                    <div class="about-actions">
+                        <a href="#projects" class="btn">查看作品集</a>
+                        <a href="#contact" class="btn btn-outline">聯絡我</a>
+                    </div>
                 </div>
             </section>
-            <section id="skills" class="section section-skills" aria-labelledby="skills-heading">
+          <section id="skills" class="section section-skills" aria-labelledby="skills-heading">
                 <div class="container">
                     <h2 id="skills-heading" class="section-title">專業技能（之後會用 Section SDD 替換）</h2>
                     <p>這裡目前是 Skills 區的占位內容。</p>
@@ -285,7 +391,7 @@
                     </p>
                 </div>
             </section>
-            <section id="projects" class="section section-projects" aria-labelledby="projects-heading">
+          <section id="projects" class="section section-projects" aria-labelledby="projects-heading">
                 <div class="container">
                     <h2 id="projects-heading" class="section-title">精選作品集（之後會用 Section SDD 替換）</h2>
                     <p>這裡目前是 Projects 區的占位內容。</p>
@@ -302,7 +408,7 @@
                     </p>
                 </div>
             </section>
-            <section id="contact" class="section section-contact" aria-labelledby="contact-heading">
+          <section id="contact" class="section section-contact" aria-labelledby="contact-heading">
                 <div class="container">
                     <h2 id="contact-heading" class="section-title">聯絡我（之後會用 Section SDD 替換）</h2>
                     <p>這裡目前是 Contact 區的占位內容。</p>
@@ -319,7 +425,7 @@
                     </p>
                 </div>
             </section>
-            </main>
+          </main>
 
         <footer style="text-align: center; padding: 2rem 0; color: var(--color-text-muted); font-size: 0.875rem; border-top: 1px solid var(--color-border);">
             <div class="container">
