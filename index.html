@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yi-Chen · Frontend Dev | 前端工程師個人品牌網站</title>
-    <meta name="description" content="Yi-Chen 的個人品牌網站。這裡展示了一位專注於使用者體驗的前端工程師的自我介紹、專業技能、精選作品集以及聯絡方式。">
+    <title>Pei-Wei · Frontend Dev | 前端工程師個人品牌網站</title>
+    <meta name="description" content="Pei-Wei 的個人品牌網站。這裡展示了一位專注於使用者體驗的前端工程師的自我介紹、專業技能、精選作品集以及聯絡方式。">
 
     <style>
         /* * =========================================
@@ -36,6 +36,7 @@
 
         html {
             scroll-behavior: smooth;
+            overflow-x: hidden; /* 額外保險：防止任何未預期的水平捲動 */
         }
 
         body {
@@ -45,15 +46,16 @@
             background-color: var(--color-bg-main);
             color: var(--color-text-main);
             line-height: 1.6;
+            overflow-x: hidden; /* 配合 html 防止卷軸 */
         }
 
-        /* 通用容器 */
+        /* 通用容器 - Mobile First 優化：320px 時縮小 padding */
         .container {
             width: 100%;
             max-width: var(--container-width);
             margin: 0 auto;
-            padding-left: 1.5rem;
-            padding-right: 1.5rem;
+            padding-left: 1rem;  /* 調整：1.5rem -> 1rem */
+            padding-right: 1rem; /* 調整：1.5rem -> 1rem */
         }
 
         /* 圖片通用設定 */
@@ -93,14 +95,17 @@
             text-decoration: none;
         }
 
-        /* Header 與 導覽列 */
+        /* Header 與 導覽列 - Mobile First 重構 */
         .site-header {
             position: sticky;
             top: 0;
             z-index: 1000;
             background-color: rgba(15, 23, 42, 0.95);
             border-bottom: 1px solid var(--color-border);
-            height: var(--header-height);
+            /* 調整：手機版高度改為自動，以適應內容堆疊 */
+            height: auto;
+            min-height: var(--header-height);
+            padding: 0.5rem 0;
             display: flex;
             align-items: center;
             backdrop-filter: blur(5px);
@@ -108,8 +113,11 @@
 
         .site-header .container {
             display: flex;
-            justify-content: space-between;
+            /* 調整：手機版預設垂直排列，避免 320px 擠壓 */
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
+            gap: 0.5rem;
         }
 
         .brand-logo {
@@ -121,11 +129,15 @@
         .nav {
             display: flex;
             gap: 1rem;
+            /* 調整：允許換行，避免撐破寬度 */
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .nav-link {
             font-size: 0.9rem;
             color: var(--color-text-muted);
+            white-space: nowrap; /* 保持連結文字不折行 */
         }
 
         .nav-link:hover {
@@ -153,7 +165,8 @@
             display: flex;
             align-items: center;
             text-align: center;
-            padding-top: calc(var(--header-height) + 2rem);
+            /* 調整：手機版 Header 變高，增加上方留白 */
+            padding-top: calc(var(--header-height) + 4rem);
         }
 
         .hero-content {
@@ -162,10 +175,13 @@
         }
 
         .section-hero h1 {
-            font-size: 2.5rem;
+            font-size: 2rem; /* 調整：手機版稍微縮小字體 */
             margin-bottom: 1rem;
             line-height: 1.2;
             color: var(--color-text-main);
+            /* 調整：防止長單字撐破 320px */
+            word-break: break-word;
+            hyphens: auto;
         }
 
         .hero-image-wrapper {
@@ -269,8 +285,34 @@
 
         /* CSS:RWD-START */
         @media (min-width: 768px) {
+            /* 恢復一般容器 Padding */
+            .container {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+
+            /* Header 恢復橫向排列 */
+            .site-header {
+                height: var(--header-height);
+                padding: 0;
+            }
+
+            .site-header .container {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .nav {
+                justify-content: flex-end;
+                flex-wrap: nowrap; /* 平板以上不換行 */
+            }
+
             .section {
                 padding: 6rem 0;
+            }
+
+            .section-hero {
+                padding-top: calc(var(--header-height) + 2rem);
             }
 
             .section-hero h1 {
@@ -318,7 +360,7 @@
     <div class="page">
         <header class="site-header">
             <div class="container">
-                <a href="#hero" class="brand-logo">Yi-Chen · Frontend Dev</a>
+                <a href="#hero" class="brand-logo">Pei-Wei · Frontend Dev</a>
                 <nav class="nav">
                     <a href="#hero" class="nav-link">首頁</a>
                     <a href="#about" class="nav-link">關於我</a>
@@ -332,7 +374,7 @@
         <main>
           <section id="hero" class="section section-hero">
                 <div class="container hero-content">
-                    <h1>你好，我是 Yi-Chen<br>專注細節的前端開發者</h1>
+                    <h1>你好，我是 Pei-Wei<br>專注細節的前端開發者</h1>
                     <p>
                         這是一個個人品牌網站的「骨架預覽」。<br>
                         目前此區塊為占位內容，之後會展示我的核心價值與一句話自我介紹。
@@ -361,7 +403,7 @@
                     <h2 id="about-heading" class="section-title">關於我</h2>
                     
                     <p>
-                        我現在是一位遊走於美感編排與教學分享的前端工程師，也是一位致力於將靈感化為現實的夢想創造者。我相信程式碼不只是邏輯的堆疊，更是建構使用者體驗的重要基石。
+                        我現在是一位遊走於美感編排與教學分享的前端開發者，也是一位致力於將靈感化為現實的夢想創造者。我相信程式碼不只是邏輯的堆疊，更是建構使用者體驗的重要基石。
                     </p>
                     
                     <p>
@@ -429,7 +471,7 @@
 
         <footer style="text-align: center; padding: 2rem 0; color: var(--color-text-muted); font-size: 0.875rem; border-top: 1px solid var(--color-border);">
             <div class="container">
-                <p>&copy; 2024 Yi-Chen · Frontend Dev. All rights reserved.</p>
+                <p>&copy; 2024 Pei-Wei · Frontend Dev. All rights reserved.</p>
             </div>
         </footer>
     </div>
